@@ -5,7 +5,7 @@
 1. Create minikube using `minikube start`.
    Pass `--subnet=''` flag to set a subnet for a cluster (>1 nodes). 
 
-2. Bootstrap minikube with flux and load cluster config/info into bootstrapped minikube cluster using `task bootstrap-flux`.
+2. Bootstrap minikube with flux and load cluster config/info into bootstrapped minikube cluster using `task cluster:install`.
 
 3. Be happy!
 

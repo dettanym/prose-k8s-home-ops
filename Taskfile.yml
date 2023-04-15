@@ -3,19 +3,6 @@ version: "3"
 
 vars:
   KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
-  
 
-tasks: 
-  verify: 
-    desc: Verify flux meets the prerequisites
-    cmds:
-      - flux check --pre
-
-  bootstrap-flux:
-    desc: Install Flux into your cluster
-    cmds:
-      - kubectl apply --kustomize {{.KUBERNETES_DIR}}/{{.cluster}}/bootstrap
-      - kubectl apply -f {{.KUBERNETES_DIR}}/{{.cluster}}/flux/vars/cluster-settings.yaml
-      - kubectl apply --kustomize {{.KUBERNETES_DIR}}/{{.cluster}}/flux/config
-    vars:
-      cluster: '{{ .cluster | default "cluster-1" }}'
+includes:
+  cluster: .taskfiles/cluster/tasks.yml
