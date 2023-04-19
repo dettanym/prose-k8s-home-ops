@@ -7,3 +7,4 @@ resources:
   - ./k8s-gateway.yaml
   - ./kubernetes-dashboard.yaml
   - ./metallb.yaml
+  - ./weave-gitops.yaml
