@@ -37,7 +37,10 @@ spec:
       enabled: true
       className: nginx
       hosts:
-        - "kubernetes.${SECRET_DOMAIN}"
+        - &host "kubernetes.${SECRET_DOMAIN}"
+      tls:
+        - hosts:
+            - *host
     metricsScraper:
       enabled: true
     serviceMonitor:
