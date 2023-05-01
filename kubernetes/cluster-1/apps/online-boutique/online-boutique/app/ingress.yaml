@@ -14,7 +14,7 @@ spec:
       paths:
       - backend:
           service:
-            name: frontend-external
+            name: frontend
             port:
               number: 80
         path: /
