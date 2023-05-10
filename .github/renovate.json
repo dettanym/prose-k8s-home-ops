@@ -8,7 +8,8 @@
     ":dependencyDashboard",
     ":automergeDigest",
     ":automergeBranch",
-    ":semanticCommits"
+    ":semanticCommits",
+    "github>dettanym/prose-k8s-home-ops//.github/renovate/groups.json"
   ],
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "schedule": ["every tuesday"],
