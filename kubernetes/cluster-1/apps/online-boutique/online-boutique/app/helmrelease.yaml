@@ -8,10 +8,9 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: onlineboutique
-      version: 0.6.0
+      chart: ./helm-chart
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: online-boutique
         namespace: flux-system
   maxHistory: 3

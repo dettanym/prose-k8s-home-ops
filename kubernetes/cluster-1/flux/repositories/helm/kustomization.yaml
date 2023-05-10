@@ -7,6 +7,5 @@ resources:
   - ./k8s-gateway.yaml
   - ./kubernetes-dashboard.yaml
   - ./metallb.yaml
-  - ./online-boutique.yaml
   - ./prose.yaml
   - ./weave-gitops.yaml
