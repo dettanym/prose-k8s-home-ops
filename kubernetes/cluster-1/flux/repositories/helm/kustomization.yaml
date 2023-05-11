@@ -7,5 +7,6 @@ resources:
   - ./k8s-gateway.yaml
   - ./kubernetes-dashboard.yaml
   - ./metallb.yaml
+  - ./opentelemetry-operator.yaml
   - ./prose.yaml
   - ./weave-gitops.yaml
