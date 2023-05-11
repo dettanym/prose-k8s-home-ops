@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-prose-system
+  name: cluster-apps-prose-system-prose
   namespace: flux-system
 spec:
   path: ./kubernetes/cluster-1/apps/prose-system/prose/app
