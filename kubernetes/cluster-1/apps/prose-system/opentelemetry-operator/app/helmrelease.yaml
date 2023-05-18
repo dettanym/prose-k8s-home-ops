@@ -28,3 +28,5 @@ spec:
   values:
     admissionWebhooks:
       create: false
+#TODO: For the Instrumentation CRD to have any impact, first change the helmrelease to point to the
+# instrumentation images. See the values.yaml file --- manager.autoInstrumentationImage.{java,python,nodejs,dotnet}.{repository,tag}

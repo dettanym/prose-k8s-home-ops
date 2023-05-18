@@ -5,3 +5,4 @@ namespace: prose-system
 resources:
   - ./helmrelease.yaml
   - ./opentelemetrycollector.yaml
+  - ./instrumentation.yaml
