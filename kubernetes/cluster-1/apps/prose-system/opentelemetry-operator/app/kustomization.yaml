@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: prose-system
 resources:
   - ./helmrelease.yaml
+  - ./opentelemetrycollector.yaml
