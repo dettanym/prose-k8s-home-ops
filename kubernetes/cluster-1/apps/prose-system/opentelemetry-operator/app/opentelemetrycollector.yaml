@@ -3,6 +3,7 @@ kind: OpenTelemetryCollector
 metadata:
   name: demo
 spec:
+  mode: "deployment"
   #TODO: By default, this sets 'mode: Deployment', creating a Deployment (and a Service?).
   # For other modes, see here:
   # https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#install-opentelemetry-collector
@@ -50,9 +51,9 @@ spec:
           processors: [memory_limiter, batch]
           exporters: [logging]
   ingress:
+    type: ingress
     ingressClassName: nginx
-    hostname:
-    - host: &host "opentelemetry-operator.${SECRET_DOMAIN}"
+    hostname: "opentelemetry-operator.${SECRET_DOMAIN}"
     tls:
     - hosts:
-      - *host
+      - "opentelemetry-operator.${SECRET_DOMAIN}"
