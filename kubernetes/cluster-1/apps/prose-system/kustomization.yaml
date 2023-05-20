@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./prose/ks.yaml
+  - ./opentelemetry-operator/ks.yaml
