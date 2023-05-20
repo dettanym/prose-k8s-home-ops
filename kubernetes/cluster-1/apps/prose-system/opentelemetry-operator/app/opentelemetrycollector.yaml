@@ -4,8 +4,8 @@ metadata:
   name: demo
 spec:
   #TODO: By default, this sets 'mode: Deployment', creating a Deployment (and a Service?).
-  #  For other modes, see here:
-  #   https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#install-opentelemetry-collector
+  # For other modes, see here:
+  # https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#install-opentelemetry-collector
   config: |
     #Configures the OpenTelemetry Operator.
     # Check the main docs here: https://opentelemetry.io/docs/collector/configuration/
