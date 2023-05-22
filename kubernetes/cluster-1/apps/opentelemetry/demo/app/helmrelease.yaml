@@ -37,6 +37,7 @@ spec:
       frontendProxy:
         ingress:
           enabled: true
+          ingressClassName: nginx
           hosts:
             - host: otel-demo.${SECRET_DOMAIN}
               paths:
@@ -46,6 +47,7 @@ spec:
     opentelemetry-collector:
       ingress:
         enabled: true
+        ingressClassName: nginx
         hosts:
           - host: otel-demo-collector.${SECRET_DOMAIN}
             paths:
