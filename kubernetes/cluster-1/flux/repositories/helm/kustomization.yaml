@@ -6,6 +6,7 @@ resources:
   - ./ingress-nginx.yaml
   - ./k8s-gateway.yaml
   - ./kubernetes-dashboard.yaml
+  - ./istio.yaml
   - ./metallb.yaml
   - ./opentelemetry-operator.yaml
   - ./prose.yaml
