@@ -30,10 +30,6 @@ data:
     }, {
       "op": "add",
       "path": "/spec/volumes/-",
-      "value": opa_config_volume,
-    }, {
-      "op": "add",
-      "path": "/spec/volumes/-",
       "value": opa_policy_volume,
     }]
 
@@ -43,15 +39,14 @@ data:
       "args": [
         "run",
         "--server",
-        "--config-file=/config/config.yaml",
         "--addr=localhost:8181",
         "--diagnostic-addr=0.0.0.0:8282",
+        "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
+        "--set=plugins.envoy_ext_authz_grpc.path=envoy/authz/allow"
+        "--set=decision_logs.console=true"
         "/policy/policy.rego",
       ],
       "volumeMounts": [{
-        "mountPath": "/config",
-        "name": "opa-istio-config",
-      }, {
         "mountPath": "/policy",
         "name": "opa-policy",
       }],
@@ -67,11 +62,6 @@ data:
           "port": 8282,
         },
       }
-    }
-
-    opa_config_volume = {
-      "name": "opa-istio-config",
-      "configMap": {"name": "opa-istio-config"},
     }
 
     opa_policy_volume = {
