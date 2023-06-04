@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-bookinfo-app
   namespace: flux-system
 spec:
-  path: ./kubernetes/cluster-1/apps/bookinfo/bookinfo/app
+  path: ./kubernetes/cluster-1/apps/test-sample-microservices/bookinfo/app
   prune: true
   sourceRef:
     kind: GitRepository
