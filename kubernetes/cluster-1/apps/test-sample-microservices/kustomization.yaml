@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./online-boutique/ks.yaml
   - ./opentelemetry/ks.yaml
+  - ./pitstop/ks.yaml

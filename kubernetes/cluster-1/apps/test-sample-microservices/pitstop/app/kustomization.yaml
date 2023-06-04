@@ -25,6 +25,6 @@ patches:
       kind: Service
       metadata:
         name: webapp
-        namespace: pitstop
+        namespace: test-sample-microservices
       spec:
         type: NodePort

@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/instance: pitstop
     app.kubernetes.io/name: pitstop
   name: pitstop
-  namespace: pitstop
+  namespace: test-sample-microservices
 spec:
   ingressClassName: nginx
   rules:
