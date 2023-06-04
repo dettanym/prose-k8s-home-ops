@@ -6,7 +6,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: tap-pii-detection
-  namespace: bookinfo
 spec:
   configPatches:
     - applyTo: HTTP_FILTER
