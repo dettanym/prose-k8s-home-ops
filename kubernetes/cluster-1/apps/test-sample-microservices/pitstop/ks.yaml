@@ -14,7 +14,7 @@ spec:
     - apiVersion: apps/v1
       kind: Deployment
       name: webapp
-      namespace: test-sample-microservices
+      namespace: pitstop
   interval: 30m
   retryInterval: 1m
   timeout: 3m
