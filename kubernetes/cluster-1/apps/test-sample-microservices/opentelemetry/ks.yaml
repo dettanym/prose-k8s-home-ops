@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-opentelemetry-demo-app
   namespace: flux-system
 spec:
-  path: ./kubernetes/cluster-1/apps/opentelemetry/demo/app
+  path: ./kubernetes/cluster-1/apps/test-sample-microservices/opentelemetry/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -14,7 +14,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: opentelemetry-demo
-      namespace: opentelemetry
+      namespace: test-sample-microservices
   interval: 30m
   retryInterval: 1m
   timeout: 3m
