@@ -5,7 +5,6 @@ metadata:
     app.kubernetes.io/instance: online-boutique
     app.kubernetes.io/name: online-boutique
   name: online-boutique
-  namespace: test-sample-microservices
 spec:
   ingressClassName: nginx
   rules:
