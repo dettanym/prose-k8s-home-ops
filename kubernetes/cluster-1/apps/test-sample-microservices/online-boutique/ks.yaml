@@ -5,7 +5,7 @@ metadata:
   name: cluster-apps-online-boutique
   namespace: flux-system
 spec:
-  path: ./kubernetes/cluster-1/apps/online-boutique/online-boutique/app
+  path: ./kubernetes/cluster-1/apps/test-sample-microservices/online-boutique/app
   prune: true
   sourceRef:
     kind: GitRepository

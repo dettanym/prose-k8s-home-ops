@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: online-boutique
-  namespace: online-boutique
+  namespace: test-sample-microservices
 spec:
   interval: 15m
   chart:
