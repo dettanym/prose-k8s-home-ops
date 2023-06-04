@@ -40,21 +40,13 @@ spec:
                 stat_prefix: "ext_authz"
 ---
 ############################################################
-# Namespace for cluster-wide OPA-Istio components.
-############################################################
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: opa-istio
----
-############################################################
 # TLS certificate for OPA admission controller.
 ############################################################
 apiVersion: v1
 kind: Secret
 metadata:
   name: server-cert
-  namespace: opa-istio
+  namespace: istio-system
 data:
   tls.crt: |-
     LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZZRENDQTBpZ0F3SUJBZ0lKQUlWYlFzL2o3
@@ -156,7 +148,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: opa-istio
+  namespace: istio-system
   name: inject-policy
 data:
   inject.rego: |
@@ -238,7 +230,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: admission-controller
-  namespace: opa-istio
+  namespace: istio-system
   labels:
     app: admission-controller
 spec:
@@ -258,7 +250,7 @@ kind: Deployment
 metadata:
   labels:
     app: admission-controller
-  namespace: opa-istio
+  namespace: istio-system
   name: admission-controller
 spec:
   replicas: 1
@@ -324,7 +316,7 @@ webhooks:
     clientConfig:
       service:
         name: admission-controller
-        namespace: opa-istio
+        namespace: istio-system
         path: "/v0/data/istio/inject"
       caBundle: |-
         LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZZRENDQTBpZ0F3SUJBZ0lKQUlWYlFzL2o3
