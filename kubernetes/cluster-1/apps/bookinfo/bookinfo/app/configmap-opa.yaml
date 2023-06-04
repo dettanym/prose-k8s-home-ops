@@ -13,6 +13,7 @@ data:
         path: istio/authz/allow
     decision_logs:
       console: true
+---
 ############################################################
 # Example policy to enforce into OPA-Istio sidecars.
 ############################################################
