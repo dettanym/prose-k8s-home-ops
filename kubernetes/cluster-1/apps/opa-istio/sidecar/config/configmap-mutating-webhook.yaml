@@ -54,7 +54,7 @@ webhooks:
         resources: ["pods"]
     namespaceSelector:
       matchLabels:
-        istio-injection: enabled
+        opa-istio-injection: enabled
     failurePolicy: Fail
     admissionReviewVersions: ["v1", "v1beta1"]
     sideEffects: None
