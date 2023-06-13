@@ -30,7 +30,7 @@ data:
     }]
 
     opa_container = {
-      "image": "openpolicyagent/opa:latest-istio",
+      "image": "openpolicyagent/opa:latest@sha256:bc6e767520c624c56d2706a1a10a1b8932171cc3d0f4da97c30fca90d33902d0",
       "name": "opa-istio",
       "args": [
         "run",
@@ -39,8 +39,8 @@ data:
         "--diagnostic-addr=0.0.0.0:8282",
         "--set=plugins.envoy_ext_authz_grpc.addr=:9191",
         "--set=plugins.envoy_ext_authz_grpc.path=envoy/authz/allow",
-        "--set=services.bundles.url=https://prose.my-example.com:8080",
-        "--set=bundles.target_policy.resource=./bundle.tar.gz",
+        "--set=services.bundles.url=https://prose.my-example.com",
+        "--set=bundles.default.resource=bundle.tar.gz",
         "--set=decision_logs.console=true",
       ],
       "readinessProbe": {
