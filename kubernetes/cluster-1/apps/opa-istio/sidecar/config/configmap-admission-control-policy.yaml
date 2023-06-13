@@ -30,7 +30,7 @@ data:
     }]
 
     opa_container = {
-      "image": "openpolicyagent/opa:latest@sha256:bc6e767520c624c56d2706a1a10a1b8932171cc3d0f4da97c30fca90d33902d0",
+      "image": "openpolicyagent/opa:latest-istio@sha256:7b86610f2bc2723ea61b5c1c6354ec34f70fa35269e49c14174675d59e406105",
       "name": "opa-istio",
       "args": [
         "run",
