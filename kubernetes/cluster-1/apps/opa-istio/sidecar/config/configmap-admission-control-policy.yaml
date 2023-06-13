@@ -27,10 +27,6 @@ data:
       "op": "add",
       "path": "/spec/containers/-",
       "value": opa_container,
-    }, {
-      "op": "add",
-      "path": "/spec/volumes/-",
-      "value": opa_policy_volume,
     }]
 
     opa_container = {
@@ -43,13 +39,10 @@ data:
         "--diagnostic-addr=0.0.0.0:8282",
         "--set=plugins.envoy_ext_authz_grpc.addr=:9191",
         "--set=plugins.envoy_ext_authz_grpc.path=envoy/authz/allow",
+        "--set=services.bundles.url=https://prose.my-example.com:8080",
+        "--set=bundles.target_policy.resource=./bundle.tar.gz",
         "--set=decision_logs.console=true",
-        "/policy/policy.rego",
       ],
-      "volumeMounts": [{
-        "mountPath": "/policy",
-        "name": "opa-policy",
-      }],
       "readinessProbe": {
         "httpGet": {
           "path": "/health?plugins",
@@ -62,10 +55,5 @@ data:
           "port": 8282,
         },
       }
-    }
-
-    opa_policy_volume = {
-      "name": "opa-policy",
-      "configMap": {"name": "opa-policy"},
     }
 ---
