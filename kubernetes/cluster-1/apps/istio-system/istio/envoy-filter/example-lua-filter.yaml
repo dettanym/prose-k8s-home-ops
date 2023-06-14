@@ -40,15 +40,17 @@ spec:
 
                 request_handle:logWarn("hello world >> on request")
                 -- Log information about the request
-                request_handle:logInfo("  Authority: "..request_handle:headers():get(":authority"))
-                request_handle:logInfo("  Method: "..request_handle:headers():get(":method"))
-                request_handle:logInfo("  Path: "..request_handle:headers():get(":path"))
+                request_handle:logWarn("  Authority: "..request_handle:headers():get(":authority"))
+                request_handle:logWarn("  Method: "..request_handle:headers():get(":method"))
+                request_handle:logWarn("  Path: "..request_handle:headers():get(":path"))
               end
 
               function envoy_on_response(response_handle)
                 response_handle:logWarn("hello world >> on response")
                 -- Log response status code
-                response_handle:logInfo("Status: "..response_handle:headers():get(":status"))
+                response_handle:logWarn("  Status: "..response_handle:headers():get(":status"))
+                response_handle:logWarn("  Method: "..response_handle:headers():get(":method"))
+                response_handle:logWarn("  Path: "..response_handle:headers():get(":path"))
               end
     # The second patch adds the cluster that is referenced by the lua code
     # cds match is omitted as a new cluster is being added
