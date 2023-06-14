@@ -43,15 +43,16 @@ data:
         "--set=bundles.default.resource=bundle.tar.gz",
         "--set=decision_logs.console=true",
       ],
+    #The HTTP Health request doesn't work as the OPA container returns a result of 'null' instead of true or false.    
+    #Potentially some hidden code in the policy.rego file could impact this. 
+    #Relevant issue: https://github.com/open-policy-agent/opa/issues/4918
       "readinessProbe": {
-        "httpGet": {
-          "path": "/health?plugins",
+        "tcpSocket": {
           "port": 8282,
         },
       },
       "livenessProbe": {
-        "httpGet": {
-          "path": "/health?plugins",
+        "tcpSocket": {
           "port": 8282,
         },
       }
