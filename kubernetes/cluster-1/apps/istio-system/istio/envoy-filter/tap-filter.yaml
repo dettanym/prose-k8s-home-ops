@@ -25,15 +25,15 @@ spec:
             "@type": type.googleapis.com/envoy.extensions.filters.http.tap.v3.Tap
             common_config:
               static_config:
-                match_config:
-                  http_request_generic_body_match:
-                    patterns:
-                      - string_match: email
-                      - string_match: address
-                  http_response_generic_body_match:
-                    patterns:
-                      - string_match: name
-                      - string_match: address
+                match_config: any_match
+#                  http_request_generic_body_match:
+#                    patterns:
+#                      - string_match: email
+#                      - string_match: address
+#                  http_response_generic_body_match:
+#                    patterns:
+#                      - string_match: name
+#                      - string_match: address
                 output_config:
                   streaming: true
                   sinks:
