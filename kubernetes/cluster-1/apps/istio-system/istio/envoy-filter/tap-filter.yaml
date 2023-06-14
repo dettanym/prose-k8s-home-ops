@@ -36,7 +36,7 @@ spec:
 #                      - string_match: name
 #                      - string_match: address
                 output_config:
-                  streaming: true
+#                  streaming: true
                   sinks:
                     - format: JSON_BODY_AS_STRING
                       file_per_tap:
