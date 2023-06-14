@@ -49,7 +49,6 @@ spec:
                 response_handle:logWarn("hello world >> on response")
                 -- Log response status code
                 response_handle:logWarn("  Status: "..response_handle:headers():get(":status"))
-                response_handle:logWarn("  Method: "..response_handle:headers():get(":method"))
                 response_handle:logWarn("  Path: "..response_handle:headers():get(":path"))
               end
     # The second patch adds the cluster that is referenced by the lua code
