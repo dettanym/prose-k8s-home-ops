@@ -46,7 +46,7 @@ spec:
               end
 
               function envoy_on_response(response_handle)
-                request_handle:logWarn("hello world >> on response")
+                response_handle:logWarn("hello world >> on response")
                 -- Log response status code
                 response_handle:logInfo("Status: "..response_handle:headers():get(":status"))
               end
