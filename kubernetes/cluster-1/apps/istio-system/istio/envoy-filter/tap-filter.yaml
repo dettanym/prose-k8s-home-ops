@@ -25,7 +25,8 @@ spec:
             "@type": type.googleapis.com/envoy.extensions.filters.http.tap.v3.Tap
             common_config:
               static_config:
-                match_config: any_match
+                match_config:
+                  any_match: true
 #                  http_request_generic_body_match:
 #                    patterns:
 #                      - string_match: email
