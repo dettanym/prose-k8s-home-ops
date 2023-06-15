@@ -26,7 +26,7 @@ spec:
           typed_config:
             "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
             source_codes:
-              print_headers_body.lua
+              filename: print_headers_body.lua
     # The second patch adds the cluster that is referenced by the lua code
     # cds match is omitted as a new cluster is being added
 #    - applyTo: CLUSTER
