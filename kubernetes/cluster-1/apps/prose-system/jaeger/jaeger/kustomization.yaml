@@ -4,4 +4,5 @@ kind: Kustomization
 namespace: prose-system
 resources:
   - helmrelease.yaml
+  - ingress.yaml
   # - https://github.com/jaegertracing/jaeger-operator/releases/download/v1.46.0/jaeger-operator.yaml
