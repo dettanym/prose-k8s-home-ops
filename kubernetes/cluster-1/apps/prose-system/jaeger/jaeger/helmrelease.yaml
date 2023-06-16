@@ -25,3 +25,8 @@ spec:
     crds: CreateReplace
   uninstall:
     keepHistory: false
+  values:
+    collector:
+      service:
+        zipkin:
+          port: 9411
