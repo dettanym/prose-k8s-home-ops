@@ -4,9 +4,10 @@ kind: Kustomization
 resources:
   - ./bjw-s.yaml
   - ./ingress-nginx.yaml
+  - ./istio.yaml
+  - ./jaegertracing.yaml
   - ./k8s-gateway.yaml
   - ./kubernetes-dashboard.yaml
-  - ./istio.yaml
   - ./metallb.yaml
   - ./opentelemetry-operator.yaml
   - ./prose.yaml
