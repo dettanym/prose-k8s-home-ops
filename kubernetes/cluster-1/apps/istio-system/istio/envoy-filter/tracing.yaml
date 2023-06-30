@@ -6,13 +6,9 @@ spec:
   meshConfig:
     enableTracing: true
     defaultConfig:
-      tracing: {} # disabled MeshConfig tracing options
-    extensionProviders:
-      # add zipkin provider
-      - name: zipkin
+      tracing:
         zipkin:
-          service: jaeger-collector.prose-system.svc.cluster.local
-          port: 9411
+          service: jaeger-collector.prose-system.svc.cluster.local:9411
 ---
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
