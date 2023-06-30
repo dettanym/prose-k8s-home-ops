@@ -9,6 +9,8 @@ spec:
       tracing:
         zipkin:
           service: jaeger-collector.prose-system.svc.cluster.local:9411
+        tracing:
+          sampling: 100
 ---
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
