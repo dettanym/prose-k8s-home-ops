@@ -8,7 +8,7 @@ spec:
     defaultConfig:
       tracing:
         zipkin:
-          service: jaeger-collector.prose-system.svc.cluster.local:9411
+          address: jaeger-collector.prose-system.svc.cluster.local:9411
         tracing:
           sampling: 100
 ---
