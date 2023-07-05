@@ -10,7 +10,7 @@ spec:
       extensionProviders:
         name: zipkin
         zipkin:
-          service: zipkin.istio-system.svc.cluster.local #jaeger-collector.prose-system.svc.cluster.local:9411
+          service: jaeger-collector.istio-system #jaeger-collector.prose-system.svc.cluster.local:9411
           port: 9411
 ---
 apiVersion: telemetry.istio.io/v1alpha1
