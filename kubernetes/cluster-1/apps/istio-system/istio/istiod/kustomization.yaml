@@ -4,5 +4,5 @@ kind: Kustomization
 namespace: istio-system
 resources:
   - ./helmrelease.yaml
-  - https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/jaeger.yaml
+  - jaeger.yaml
   - jaeger-ingress.yaml
