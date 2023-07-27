@@ -6,6 +6,7 @@ metadata:
   namespace: prose-system
 spec:
   interval: 15m
+  timeout: 5m
   chart:
     spec:
       chart: prose
