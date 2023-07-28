@@ -45,10 +45,11 @@ spec:
                   local body_len = response_handle:body():length()
                   response_handle:logWarn("  Body: "..response_handle:body():getBytes(0, body_len))
                   -- Make a call to the presidio service at presidio.prose-system.svc.cluster.local
+                  local request_options = {["timeout_ms"] = 1000, ["asynchronous"] = true}
                   local headers, body = response_handle:httpCall(
                           "prose_cluster",
                           {
-                              [":method"] = "GET",
+                              [":method"] = "POST",
                               -- Create an HTTP body with a json_to_analyze field
                               [":path"] = "/batchanalyze",
                               [":authority"] = "presidio.prose-system.svc.cluster.local:3000",
@@ -56,6 +57,7 @@ spec:
                           }
                   ,
                           '{"json_to_analyze": { "URL": "www.abc.com"}}'
+                  ,        request_options
                   )
                   for key, value in pairs(headers) do
                       response_handle:logWarn("Presidio response header key: "..key..", Value: "..value)
@@ -77,7 +79,7 @@ spec:
           connect_timeout: 0.5s
           lb_policy: ROUND_ROBIN
           load_assignment:
-            cluster_name: lua_cluster
+            cluster_name: prose_cluster
             endpoints:
               - lb_endpoints:
                   - endpoint:
