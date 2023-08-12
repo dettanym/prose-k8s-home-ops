@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: presidio
+spec:
+  selector:
+    matchLabels:
+      app: presidio
+  template:
+    metadata:
+      labels:
+        app: presidio
+    spec:
+      containers:
+      - name: presidio
+        image: ghcr.io/dettanym/prose-presidio:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - name: http
+          containerPort: 3000
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
