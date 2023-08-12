@@ -5,6 +5,7 @@ metadata:
   labels:
     name: prose
 spec:
+  ingressClassName: nginx
   rules:
   - host: &host prose.my-example.com
     http:
