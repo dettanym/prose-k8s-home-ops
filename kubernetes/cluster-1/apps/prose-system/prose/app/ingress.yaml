@@ -17,6 +17,6 @@ spec:
             name: opa
             port: 
               number: 8080
-    tls:
-      - hosts:
-          - *host
+  tls:
+    - hosts:
+        - *host
