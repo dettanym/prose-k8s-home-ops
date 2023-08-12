@@ -16,7 +16,7 @@ spec:
         image: ghcr.io/dettanym/prose-presidio:latest
         resources:
           limits:
-            memory: "128Mi"
+            memory: "1Gi"
             cpu: "500m"
         ports:
         - name: http
