@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: reviews-lua
-  namespace: bookinfo
+  namespace: istio-system
 spec:
   workloadSelector:
     labels:
@@ -46,7 +46,8 @@ spec:
                   response_handle:logWarn("  Body: "..response_handle:body():getBytes(0, body_len))
                   -- Make a call to the presidio service at presidio.prose-system.svc.cluster.local
                   local request_options = {["timeout_ms"] = 1000, ["asynchronous"] = false}
-                  local headers, body = response_handle:httpCall(
+                  local resp_body = response_handle:body():getBytes(0, body_len)
+                  local presidio_headers, presidio_body = response_handle:httpCall(
                           "prose_cluster",
                           {
                               [":method"] = "POST",
@@ -56,14 +57,12 @@ spec:
                               ["Content-Type"] = "application/json"
                           }
                   ,
-                          '{"json_to_analyze": { "URL": "www.abc.com"}}'
+                          "{\"json_to_analyze\": "..resp_body.."}"
                   ,        request_options
                   )
-                  for key, value in pairs(headers) do
+                  response_handle:logWarn("  Presidio Body: "..presidio_body)
+                  for key, value in pairs(presidio_headers) do
                       response_handle:logWarn("Presidio response header key: "..key..", Value: "..value)
-                  end
-                  for key, value in pairs(body) do
-                      response_handle:logWarn("Presidio response body key: "..key..", Value: "..value)
                   end
               end
     # The second patch adds the cluster that is referenced by the lua code
@@ -92,7 +91,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: productpage-lua
-  namespace: bookinfo
+  namespace: istio-system
 spec:
   workloadSelector:
     labels:
@@ -119,35 +118,35 @@ spec:
                   request_handle:logWarn("hello world >> on request")
                   -- Log information about the request
                   request_handle:logWarn("  Authority: "..request_handle:headers():get(":authority"))
-                  request_handle:logWarn("  Method: "..request_handle:headers():get(":method"))
+                  local external_request_method = request_handle:headers():get(":method")
+                  request_handle:logWarn("  Method: "..external_request_method)
                   request_handle:logWarn("  Path: "..request_handle:headers():get(":path"))
                   local streamInfo = request_handle:streamInfo()
                   request_handle:logWarn("Request handle downstream local address: "..streamInfo:downstreamLocalAddress()..", remote addr:"..streamInfo:downstreamDirectRemoteAddress())
               
-              
-                  local body_len = request_handle:body():length()
-                  request_handle:logWarn("  Body: "..response_handle:body():getBytes(0, body_len))
-                  -- Make a call to the presidio service at presidio.prose-system.svc.cluster.local
-                  local request_options = {["timeout_ms"] = 1000, ["asynchronous"] = false}
-                  local headers, body = request_handle:httpCall(
-                          "prose_cluster",
-                          {
-                              [":method"] = "POST",
-                              -- Create an HTTP body with a json_to_analyze field
-                              [":path"] = "/batchanalyze",
-                              [":authority"] = "presidio.prose-system.svc.cluster.local:3000",
-                              ["Content-Type"] = "application/json"
-                          }
-                  ,
-                          '{"json_to_analyze": { "URL": "www.abc.com"}}'
-                  ,        request_options
-                  )
-                  -- for key, value in pairs(headers) do
-                  --    request_handle:logWarn("Presidio response header key: "..key..", Value: "..value)
-                  -- end
-                  -- for key, value in pairs(body) do
-                  --    request_handle:logWarn("Presidio response body key: "..key..", Value: "..value)
-                  -- end
+                  if method == "POST" then 
+                    local body_len = request_handle:body():length()
+                    request_handle:logWarn("  Body: "..response_handle:body():getBytes(0, body_len))
+                    -- Make a call to the presidio service at presidio.prose-system.svc.cluster.local
+                    local request_options = {["timeout_ms"] = 1000, ["asynchronous"] = false}
+                    local headers, body = request_handle:httpCall(
+                            "prose_cluster",
+                            {
+                                [":method"] = "POST",
+                                -- Create an HTTP body with a json_to_analyze field
+                                [":path"] = "/batchanalyze",
+                                [":authority"] = "presidio.prose-system.svc.cluster.local:3000",
+                                ["Content-Type"] = "application/json"
+                            }
+                    ,
+                            '{"json_to_analyze": { "URL": "www.abc.com"}}'
+                    ,        request_options
+                    )
+                    response_handle:logWarn("  Presidio Body: "..presidio_body)
+                    for key, value in pairs(presidio_headers) do
+                        response_handle:logWarn("Presidio response header key: "..key..", Value: "..value)
+                    end
+                  end
               end
 
     # The second patch adds the cluster that is referenced by the lua code
