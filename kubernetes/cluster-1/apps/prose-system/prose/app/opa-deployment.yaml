@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: opa
-        image: ghcr.io/dettanym/prose-opa:latest
+        image: ghcr.io/dettanym/prose-opa:latest@sha256:465bd136d44831ca0acdcf3ea87ed9f8ec7dbf54df538defe2104d1278994e4b
         resources:
           limits:
             memory: "128Mi"
