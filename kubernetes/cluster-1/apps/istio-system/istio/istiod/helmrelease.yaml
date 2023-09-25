@@ -29,5 +29,7 @@ spec:
     keepHistory: false
   values:
     global:
+      proxy_init:
+        image: ghcr.io/dettanym/prose-istio-proxyv2:main@sha256:8f64d623c120fca71b87625125faeded6020d3aeffc13db7959412e15998082e
       proxy:
         image: ghcr.io/dettanym/prose-istio-proxyv2:main@sha256:8f64d623c120fca71b87625125faeded6020d3aeffc13db7959412e15998082e
