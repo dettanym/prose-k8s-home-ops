@@ -27,4 +27,7 @@ spec:
     crds: CreateReplace
   uninstall:
     keepHistory: false
-  values: {}
+  values:
+    global:
+      proxy:
+        image: ghcr.io/dettanym/prose-istio-proxyv2:main@sha256:8f64d623c120fca71b87625125faeded6020d3aeffc13db7959412e15998082e
