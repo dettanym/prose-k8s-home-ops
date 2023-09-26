@@ -30,6 +30,6 @@ spec:
   values:
     global:
       proxy_init:
-        image: ghcr.io/dettanym/prose-istio-proxyv2:main@sha256:8f64d623c120fca71b87625125faeded6020d3aeffc13db7959412e15998082e
+        image: ghcr.io/dettanym/prose-istio-proxyv2:main@sha256:e9cefdd13a48ed22c1601610a509d84970834cb597109e1aef9c354f49b408be
       proxy:
-        image: ghcr.io/dettanym/prose-istio-proxyv2:main@sha256:8f64d623c120fca71b87625125faeded6020d3aeffc13db7959412e15998082e
+        image: ghcr.io/dettanym/prose-istio-proxyv2:main@sha256:e9cefdd13a48ed22c1601610a509d84970834cb597109e1aef9c354f49b408be
